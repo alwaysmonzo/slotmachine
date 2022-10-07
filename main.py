@@ -1,3 +1,5 @@
+from random import shuffle, random
+
 def deposit():
     print('1 spin = $100')
     depositing = True
@@ -16,6 +18,26 @@ def deposit():
     return depAmount
     
 
+def jackpot():
+    j = open('jackpot.txt', 'r+')
+    jackpotValue = j.read()
+    
+    return jackpotValue
 
-deposit()
-                
+
+def spins():
+    global depAmount
+    costPerSpin = 100
+    noSpins = (depAmount // costPerSpin)
+
+    return noSpins
+
+
+def randomizer():
+    return random()
+    
+x = ['Y','V','T','R','W',7,'X','D','A','S']
+
+shuffle(x,randomizer)
+
+print(x)
