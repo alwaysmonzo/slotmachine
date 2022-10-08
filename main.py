@@ -1,4 +1,5 @@
-from random import shuffle, random
+from random import shuffle, random, choice
+from time import sleep
 
 def deposit():
     print('1 spin = $100')
@@ -37,7 +38,53 @@ def randomizer():
     return random()
     
 x = ['Y','V','T','R','W',7,'X','D','A','S']
+y = ['Y','V','T','R','W',7,'X','D','A','S']
+z = ['Y','V','T','R','W',7,'X','D','A','S']
 
 shuffle(x,randomizer)
+shuffle(y, randomizer)
+shuffle(z, randomizer)
 
-print(x)
+print(x, y, z)
+
+game = ['.','.','.']
+
+def intervals(gap):
+    return sleep(gap)
+
+def slotsGame():
+    global x, y, z, game
+
+    playing = True
+    rotations = 0
+    gap = 0.4
+
+    while playing:
+        for i in range(0,1):
+            game[0] = x[i]
+            game[1] = y[i]
+            game[2] = z[i]
+
+            x.append(x.pop(x.index(x[i])))
+            y.append(y.pop(y.index(y[i])))
+            x.append(x.pop(z.index(z[i])))
+
+            print(game,end=f'\r{game}')
+            intervals(gap)
+        rotations += 1
+        if rotations == 25:
+            gap = 0.6
+        if rotations == 30:
+            print(game)
+            break
+
+        
+        
+
+slotsGame()
+    
+
+
+
+
+        
