@@ -35,7 +35,7 @@ def spins():
 
 
 def randomizer():
-    return random()
+    return 1 - random()
     
 x = ['Y','V','T','R','W',7,'X','D','A','S']
 y = ['Y','V','T','R','W',7,'X','D','A','S']
@@ -44,8 +44,6 @@ z = ['Y','V','T','R','W',7,'X','D','A','S']
 shuffle(x,randomizer)
 shuffle(y, randomizer)
 shuffle(z, randomizer)
-
-print(x, y, z)
 
 game = ['.','.','.']
 
@@ -57,7 +55,7 @@ def slotsGame():
 
     playing = True
     rotations = 0
-    gap = 0.4
+    gap = 0.1
 
     while playing:
         for i in range(0,1):
@@ -67,13 +65,17 @@ def slotsGame():
 
             x.append(x.pop(x.index(x[i])))
             y.append(y.pop(y.index(y[i])))
-            x.append(x.pop(z.index(z[i])))
+            z.append(z.pop(z.index(z[i])))
 
-            print(game,end=f'\r{game}')
+            print(f'\r{game}')
             intervals(gap)
         rotations += 1
+        if rotations == 5:
+            gap = 0.2
+        if rotations == 15:
+            gap = 0.25
         if rotations == 25:
-            gap = 0.6
+            gap = 0.4
         if rotations == 30:
             print(game)
             break
