@@ -39,9 +39,9 @@ from keyboard import is_pressed
 def randomizer():
     return 1 - random()
     
-x = ['Y','V','T','7⭐','R']
-y = ['Y','V','T','7⭐','R']
-z = ['Y','V','T','7⭐','R']
+x = ['⭐','🎉','👀','✨','🍑']
+y = ['⭐','🎉','👀','✨','🍑']
+z = ['⭐','🎉','👀','✨','🍑']
 
 shuffle(x,randomizer)
 shuffle(y, randomizer)
@@ -69,7 +69,7 @@ def slotsGame():
             y.append(y.pop(y.index(y[i])))
             z.append(z.pop(z.index(z[i])))
 
-            print(game)
+            printSlots()
             intervals(gap)
         rotations += 1
         if rotations == 1:
@@ -82,7 +82,8 @@ def slotsGame():
             print(game)
             break
         
-
+def printSlots():
+    print(game,end='\r')
 
 def winCheck():
     print('---------------------------')
